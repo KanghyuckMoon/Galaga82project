@@ -5,8 +5,6 @@ using DG.Tweening;
 
 public class Spr_GalagaEnemy : Spr_NormalEnemy
 {
-    private bool move = false;
-    private Vector2 plypos;
     private float timer = 10f;
     private int ran;
     protected override void Update()
@@ -20,7 +18,7 @@ public class Spr_GalagaEnemy : Spr_NormalEnemy
         Vector2 dis = (ply.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle + ran, Vector3.forward);
-        rigid.AddForce(transform.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
         
     }
 }

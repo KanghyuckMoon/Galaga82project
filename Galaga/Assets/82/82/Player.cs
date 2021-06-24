@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     GameObject bullet = null;
     Vector2 min;
     Vector2 max;
-    float x;
     [SerializeField]
     GameObject poolManager;
     [SerializeField]

@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpacePly : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    private float inputh;
     private PoolManager poolManager;
     [SerializeField]
     private GameObject bullet;
@@ -76,7 +75,7 @@ public class SpacePly : MonoBehaviour
     private void UpMove()
     {
         if (!upon) return;
-        rigid.AddForce(transform.right * (200 * Time.deltaTime));
+        transform.Translate(Vector3.right * 10 * Time.deltaTime);
     }
 
     public void Fire()

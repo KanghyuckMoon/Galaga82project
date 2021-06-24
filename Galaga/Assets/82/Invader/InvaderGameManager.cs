@@ -43,7 +43,7 @@ public class InvaderGameManager : MonoBehaviour
 
     private void Pool()
     {
-        float randomx = Random.Range(-8f, 8f);
+        float randomx = Random.Range(-5f, 5f);
         int randomobj = Random.Range(0, Enemys.Length);
         GameObject enemy;
         if (enemypool.transform.childCount > 0)

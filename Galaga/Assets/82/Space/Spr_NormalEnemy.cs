@@ -34,7 +34,7 @@ public class Spr_NormalEnemy : MonoBehaviour
         Vector2 dis = (ply.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        rigid.AddForce(dis * speed * Time.deltaTime);
+        transform.Translate(dis * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

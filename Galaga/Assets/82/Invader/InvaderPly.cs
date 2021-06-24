@@ -11,13 +11,7 @@ public class InvaderPly : MonoBehaviour
     Vector2 mouse;
     float angle;
     float bulletTimer = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         bulletTimer -= Time.deltaTime;

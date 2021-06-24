@@ -16,7 +16,11 @@ public class Spr_BulletMove : MonoBehaviour
     private void OnEnable()
     {
         Invoke("onfalse", 2f);
-        GetComponent<Rigidbody2D>().AddForce(transform.right * Speed, ForceMode2D.Impulse);
+    }
+
+    private void Update()
+    {
+        transform.Translate(Vector3.right * Speed * Time.deltaTime);
     }
 
     private void onfalse()
