@@ -6,6 +6,7 @@ public class MonoSingleTon<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static bool shuttingDown = false;
     private static T instance;
+    private static object locker = new object();
 
     public static T Instance
     {
@@ -16,15 +17,29 @@ public class MonoSingleTon<T> : MonoBehaviour where T : MonoBehaviour
                 Debug.LogWarning("[Singleton] Instance " + typeof(T) + "returning null.");
                 return null;
             }
-            if(instance == null)
+            lock (locker)
             {
-                instance = FindObjectOfType<T>();
-                if(instance == null)
+                if (instance == null)
                 {
-                    instance = new GameObject(typeof(T).ToString()).AddComponent<T>();
+                    instance = FindObjectOfType<T>();
+                    if (instance == null)
+                    {
+                        instance = new GameObject(typeof(T).ToString()).AddComponent<T>();
+                    }
+                    DontDestroyOnLoad(instance);
                 }
             }
             return instance;
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        shuttingDown = true;
+    }
+
+    private void OnDestroy()
+    {
+        shuttingDown = true;
     }
 }
