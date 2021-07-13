@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonManagerSelect : MonoBehaviour
+public class ButtonManagerSelect : MonoSingleTon<ButtonManagerSelect>
 {
     [SerializeField]
     private GameObject MainImages;
@@ -20,6 +20,14 @@ public class ButtonManagerSelect : MonoBehaviour
         scoretexts[0].text = string.Format("SumBest\n{0}\nHighBest\n{1}", PlayerPrefs.GetInt("MAXSUMSCORE",0), PlayerPrefs.GetInt("MAXHIGHSCORE", 0));
         scoretexts[1].text = string.Format("Best\n{0}", PlayerPrefs.GetInt("MAXSprCount", 0));
         scoretexts[2].text = string.Format("Best\n{0}", PlayerPrefs.GetInt("MAXKillCount", 0));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void OpenGuide(int num)
